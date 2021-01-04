@@ -10,7 +10,8 @@ import {
     Text,
     TextInput,
     Button,
-    Alert
+    Alert,
+    Dimensions
 } from "react-native";
 
 import styles from "./YSText.style";
@@ -21,10 +22,15 @@ const YSChoice = (props) => {
 
     return (
         <View>
-            <Text style={styles.titleLayout}>
+            <View style={styles.titleViewLayout}>
+                <Text style={styles.titleLayout}>This is YSText Components</Text>
+            </View>
+
+            <Text style={styles.viewLayout}>
                 You name is {props.name}, and {state.isSelected ? "You had made a decision!" : "Please make a choice!"}
             </Text>
-            <View style={styles.fixToText}>
+
+            <View style={styles.viewLayout}>
                 <Button 
                     title={state.isSelected ? "make choice" : "reset"}
                     onPress={() => {
@@ -36,6 +42,10 @@ const YSChoice = (props) => {
                     title="Right button"
                     onPress={() => Alert.alert('Right button pressed')}
                 />
+            </View>
+
+            <View style={styles.superLayout}>
+                
             </View>
         </View>
     )

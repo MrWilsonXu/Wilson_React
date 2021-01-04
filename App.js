@@ -53,7 +53,6 @@ const App: () => React$Node = () =>  {
             <Text style={Styles.mediumTitle}>当前设备尺寸宽度：{Dimensions.get('window').width} </Text>
             <Text></Text>
             <Text style={Styles.smallTitle}>当前设备尺寸高度：{Dimensions.get('window').height} </Text>
-            <Text style={Styles.smallTitle}>当前设备尺寸高度：{Dimensions.get('window').height} </Text>
             <Text style={Styles.smallTitle}>当前运行平台：{Platform.OS} </Text>
             <Text></Text>
             <YSText></YSText>
