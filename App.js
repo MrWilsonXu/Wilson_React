@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Styles  from "./src/Main.style";
 
 import {
@@ -15,6 +15,7 @@ import {
   ScrollView,
   View,
   Text,
+  Button,
   StatusBar,
   Dimensions,
   Platform
@@ -33,6 +34,7 @@ import {
 const App: () => React$Node = () =>  {
 
   const name = "Wilson";
+  const [count, setCount] = useState(0);
 
   function getFullName(firstName: String,secondName: String,thirdName: String) {
     return firstName + " " + secondName + " " + thirdName;
@@ -41,7 +43,7 @@ const App: () => React$Node = () =>  {
   function fetchNickName() {
     return "my name is kobe fans"
   }
-
+  
   return (
     <>
       <StatusBar barStyle="dark-content" style={{flex: 1, backgroundColor: 'black'}} />
@@ -56,6 +58,12 @@ const App: () => React$Node = () =>  {
             <Text style={Styles.smallTitle}>当前运行平台：{Platform.OS} </Text>
             <Text></Text>
             <YSText></YSText>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                <Text style={Styles.mediumTitle}>You clicked {count} times</Text>
+                <Button onPress = {() => setCount(count + 1)}
+                        title = "Press me!"
+                />
+            </View>
           </ScrollView>        
         </SafeAreaView>
       </>

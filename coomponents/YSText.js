@@ -18,7 +18,7 @@ import styles from "./YSText.style";
 
 const YSChoice = (props) => {
     /** hook 函数组件中添加一个“状态钩子”，在函数组件重新渲染执行的时候能够保持住之前的状态 */
-    const [state,setState]=useState({isSelected: false});
+    const [state,setState] = useState({isSelected: false});
 
     return (
         <View>
@@ -51,12 +51,20 @@ const YSChoice = (props) => {
     )
 }
 
-const YSText = () => {
-    return (
-        <>
-            <YSChoice name="Wilson"/>
-        </>
-    )
-}
+export default class YSText extends Component {
+    constructor() {
+        super();
+        
+        this.state = {
 
-export default YSText;
+        }
+    }
+
+    render() {
+        return (
+            <>
+                <YSChoice name="Wilson"/>
+            </>
+        )
+    }
+}
