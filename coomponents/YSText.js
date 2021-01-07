@@ -16,7 +16,10 @@ import {
 import styles from "./YSText.style";
 
 const YSChoice = (props) => {
-    /** hook 函数组件中添加一个“状态钩子”，在函数组件重新渲染执行的时候能够保持住之前的状态 */
+    /** hook 函数组件中添加一个“状态钩子”，在函数组件重新渲染执行的时候能够保持住之前的状态 
+     *  相当于oc中定义的一个属性，来记录控件的状态
+    */
+
     const [state,setState]=useState({isSelected: false});
 
     return (
