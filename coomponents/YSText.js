@@ -16,9 +16,10 @@ import {
 
 import styles from "./YSText.style";
 
+/**函数式组件 */
 const YSChoice = (props) => {
     /** hook 函数组件中添加一个“状态钩子”，在函数组件重新渲染执行的时候能够保持住之前的状态 */
-    const [state,setState] = useState({isSelected: false});
+    const [isSelected,setIsSelected] = useState(false);
 
     return (
         <View>
@@ -27,14 +28,14 @@ const YSChoice = (props) => {
             </View>
 
             <Text style={styles.viewLayout}>
-                You name is {props.name}, and {state.isSelected ? "You had made a decision!" : "Please make a choice!"}
+                You name is {props.name}, and {isSelected ? "You had made a decision!" : "Please make a choice!"}
             </Text>
 
             <View style={styles.viewLayout}>
                 <Button 
-                    title={state.isSelected ? "make choice" : "reset"}
+                    title={isSelected ? "make choice" : "reset"}
                     onPress={() => {
-                        setState({isSelected: !state.isSelected});
+                        setIsSelected(!isSelected);
                     }}     
                     color="#f194ff" 
                 />
@@ -51,6 +52,7 @@ const YSChoice = (props) => {
     )
 }
 
+/**类组件 */
 export default class YSText extends Component {
     constructor() {
         super();
