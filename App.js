@@ -36,7 +36,7 @@ const App: () => React$Node = () =>  {
   const name = "Wilson";
   const [count, setCount] = useState(0);
 
-  function getFullName(firstName: String,secondName: String,thirdName: String) {
+  function getFullName(firstName: string,secondName: string,thirdName: string) {
     return firstName + " " + secondName + " " + thirdName;
   }
 
@@ -50,7 +50,7 @@ const App: () => React$Node = () =>  {
         <SafeAreaView>
           <ScrollView>
             <Text style={Styles.largeTitle}>{this.name}First ReactNative Project</Text>
-            <Text></Text>
+            <Text/>
             <Text style={Styles.mediumTitle}>在React语法中，字符串括号可以添加任何变量赋值包括函数</Text>
             <Text style={Styles.mediumTitle}>当前设备尺寸宽度：{Dimensions.get('window').width} </Text>
             <Text></Text>

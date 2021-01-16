@@ -21,32 +21,37 @@ const YSChoice = (props) => {
     /** hook 函数组件中添加一个“状态钩子”，在函数组件重新渲染执行的时候能够保持住之前的状态 */
     const [isSelected,setIsSelected] = useState(false);
 
+    /**创建一个对象 */
+    const Element = {
+        type: "h1",
+        props: {
+        className: "footer",
+        children: "hellow world"
+        }
+    }
+
     return (
         <View>
-            <View style={styles.titleViewLayout}>
-                <Text style={styles.titleLayout}>This is YSText Components</Text>
-            </View>
-
-            <Text style={styles.viewLayout}>
-                You name is {props.name}, and {isSelected ? "You had made a decision!" : "Please make a choice!"}
-            </Text>
-
-            <View style={styles.viewLayout}>
-                <Button 
-                    title={isSelected ? "make choice" : "reset"}
-                    onPress={() => {
-                        setIsSelected(!isSelected);
-                    }}     
-                    color="#f194ff" 
-                />
-                <Button
-                    title="Right button"
-                    onPress={() => Alert.alert('Right button pressed')}
-                />
-            </View>
-
             <View style={styles.superLayout}>
-                
+                <Text style={styles.titleLayout}>This is YSText Components</Text>
+                <Text style={styles.subTitleLayout}>
+                    You name is {props.name}, and {isSelected ? "You had made a decision!" : "Please make a choice!"}
+                </Text>
+
+                <View style={styles.btnContainerViewLayout}>
+                    <Button 
+                        color='#f194ff'
+                        title={isSelected ? "make choice" : "reset"}
+                        onPress={() => {
+                            setIsSelected(!isSelected);
+                        }}     
+                    />
+                    <Button
+                        color="#1F7F7F"
+                        title="Show me Alert!"
+                        onPress={() => Alert.alert('Right button pressed')}
+                    />
+                </View>
             </View>
         </View>
     )
@@ -58,7 +63,7 @@ export default class YSText extends Component {
         super();
         
         this.state = {
-
+            
         }
     }
 

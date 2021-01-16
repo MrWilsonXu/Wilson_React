@@ -10,20 +10,25 @@ export default StyleSheet.create ({
         fontSize: 24,
         textAlign: 'center', //textAlign: enum('auto', 'left', 'right', 'center', 'justify')
     },
-    viewLayout: {
-        marginTop: 15,
+    subTitleLayout: {
         marginLeft: 15,
-        marginRight: 15,
+        top: 10,
+        fontSize: 14,
+        textAlign: 'left'
+    },
+    btnContainerViewLayout: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#F1F2F3'
+        top: 15,
+        marginLeft: 15,
+        marginRight: 15
     },
     superLayout: {
+        position: 'relative', //默认布局为relative
         marginTop: 15,
         width: Dimensions.get('window').width,
         height: 300,
-        backgroundColor: '#FCF7D7',
-        alignItems: 'baseline',
+        backgroundColor: '#FCF7D7'
     }
 
     /**布局方式 */
