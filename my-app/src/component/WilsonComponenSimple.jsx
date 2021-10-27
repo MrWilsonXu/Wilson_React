@@ -38,6 +38,11 @@ class WilsonComponenSimple extends React.Component{
         this.inputNode = c;
     }
 
+    // 事件发生自身节点会传进来，所以我们不要过度的使用ref
+    isOnBlur = (event) => {
+        alert(event.target.value)
+    }
+
     logProps() {
         console.log(this.props.name + '：' + this.props.age);
     }
@@ -46,10 +51,10 @@ class WilsonComponenSimple extends React.Component{
         const {isSelect} = this.state
 
         return (
-          <div style={{width: 180 , height: 100, backgroundColor: 'white'}}>
+          <div style={{width: 180 , height: 140, backgroundColor: 'white'}}>
             <div style={{color: 'red'}}>{isSelect+''}</div>
 
-            <button  onClick={ this.buttonClickRow } >点我试试看</button><br />  
+            <button onClick={ this.buttonClickRow } >点我试试看</button><br />  
 
             {/* ref类型:
                 1.字符串引用已被废弃，由于一些问题：https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs (效率不高)
@@ -61,7 +66,13 @@ class WilsonComponenSimple extends React.Component{
                 3.创建 api 方式
                   React.createRef()
             */}
-            <input ref={this.myRef}  type="text" placeholder="请输入内容" />
+            <input ref={this.myRef} type="text" placeholder="请输入内容" />
+            <input onBlur={this.isOnBlur}  type="text" placeholder="失去焦点时提示" />
+
+            {/* 
+                随着输入内容维护一个state‘状态’的，就归类为受控组建； 非受控的就是直接随着内容改变获取，现用现取
+                为了避免过度使用ref，尽量写state来维护，效率更高效
+            */}
 
           </div>
         )
