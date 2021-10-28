@@ -10,8 +10,17 @@ class WilsonComponenSimple extends React.Component{
         test: PropTypes.func,
     }
 
-    state = {isSelect: false}
-    // 返回一个容器，可以存储被ref标识的节点，改容器是’专人专用‘的，后面放进去会替换前面的，即一个 React.createRef() 只能用于一个节点
+    state = {isSelect: false, 
+            userName: '', 
+            password: '',
+            otherUserName: '', 
+            otherPassword: '',
+        }
+
+    /**
+     * 返回一个容器，可以存储被ref标识的节点，改容器是’专人专用‘的，后面放进去会替换前面的，即一个 React.createRef() 只能用于一个节点
+     * 官方并不推荐大量使用这种方式
+     */
     myRef = React.createRef()
 
     /**
@@ -47,11 +56,36 @@ class WilsonComponenSimple extends React.Component{
         console.log(this.props.name + '：' + this.props.age);
     }
 
+    /**
+     *  返回一个函数给onChange
+     * 
+     *  高阶函数：
+     *  1.若A函数，接收的参数为另一个函数，那么A就可以称之为高阶函数
+     *  2.若A函数，调用的返回值还是一个函数，那么A就可以称之为高阶函数
+     * 
+     *  函数的柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式
+     */ 
+    commonSaveData = (dataType) => {
+        // return部分才是 onChange 正真的回调
+        return (event) => {
+            this.setState({[dataType]: event.target.value});
+            console.log(this.state.userName);
+            console.log(this.state.password);
+        }
+    }
+    // 实现 commonSaveData 的另外一种方式
+    commonSaveDataAnother = (dataType, event) => {
+        this.setState({[dataType]: event.target.value})
+        // 为什么state中的值会少一个呢？？？？
+        console.log('传过来的值：',event.target.value);
+        console.log('通过state赋值后取出的值：', this.state.otherPassword);
+    }
+
     render() {
         const {isSelect} = this.state
 
         return (
-          <div style={{width: 180 , height: 140, backgroundColor: 'white'}}>
+          <div style={{width: 200 , height: 300, backgroundColor: 'white'}}>
             <div style={{color: 'red'}}>{isSelect+''}</div>
 
             <button onClick={ this.buttonClickRow } >点我试试看</button><br />  
@@ -73,6 +107,13 @@ class WilsonComponenSimple extends React.Component{
                 随着输入内容维护一个state‘状态’的，就归类为受控组建； 非受控的就是直接随着内容改变获取，现用现取
                 为了避免过度使用ref，尽量写state来维护，效率更高效
             */}
+
+            {/* 必须给一个函数，作为onChange的回调 */}
+            <input onChange={this.commonSaveData('userName')} type="text" placeholder="用户名：" />
+            <input onChange={this.commonSaveData('password')} type="text" placeholder="密码：" />
+
+            <input onChange={ (event) => { this.commonSaveDataAnother('otherUserName', event) }} type="text" placeholder="另外一种方式-用户名：" />
+            <input onChange={ (event) => { this.commonSaveDataAnother('otherPassword', event) }} type="text" placeholder="另外一种方式-密码：" />
 
           </div>
         )
