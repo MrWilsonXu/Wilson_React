@@ -82,24 +82,44 @@ class WilsonComponenSimple extends React.Component{
         console.log('通过state赋值后取出的值：', this.state.otherPassword);
     }
 
-        /**
-         * 组件更新流程之调用 setState
-         * (根据是否有参数，若有参数，则执行：componentWillReceiveProps，执行顺序排在下面步骤之前，但首次展示不会调用)
-         * 1.首先询问是否允许更新，调用方法：shouldComponentUpdate，我们可以充写改方法决定是否允许更新
-         * 2.第一步返回true，执行将要更新，调用方法：componentWillUpdate
-         * 3.调用render函数，更新各个节点
-         * 4.渲染完成，则调用方法：componentDidUpdate
-         */
+    /**
+     * 组件更新流程之调用 setState
+     * (根据是否有参数，若有参数，则执行：componentWillReceiveProps，执行顺序排在下面步骤之前，但首次展示不会调用)
+     * 1.首先询问是否允许更新，调用方法：shouldComponentUpdate，我们可以充写改方法决定是否允许更新
+     * 2.第一步返回true，执行将要更新，调用方法：componentWillUpdate
+     * 3.调用render函数，更新各个节点
+     * 4.渲染完成，则调用方法：componentDidUpdate
+     */
 
-        /**
-         * 组件更新流程之调用 forceUpdate
-         * 1.执行将要更新，调用方法：componentWillUpdate
-         * 2.调用render函数，更新各个节点
-         * 3.渲染完成，则调用方法：componentDidUpdate
-         */
+    /**
+     * 组件更新流程之调用 forceUpdate
+     * 1.执行将要更新，调用方法：componentWillUpdate
+     * 2.调用render函数，更新各个节点
+     * 3.渲染完成，则调用方法：componentDidUpdate
+     */
+
+    /**
+     * 组件更新
+     */
+    getSnapshotBeforeUpdate() {
+        
+    }
+
+    /**
+     * 组件初次加载
+     */
+    componentWillUnmount() {
+        console.log('组件将要卸载：componentWillUnmount');
+    }
+
+    componentDidMount() {
+        console.log('组件已经挂载：componentDidMount');
+    }
 
     render() {
         const {isSelect} = this.state
+
+        console.log('组件渲染完成：render');
 
         return (
           <div style={{width: 200 , height: 300, backgroundColor: 'white'}}>

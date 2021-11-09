@@ -31,6 +31,7 @@ function App(props) {
       <header className="App-header">
         {/* 精简类组件 */}
         
+        {/* 传递参数：name 和 age */}
         <WilsonComponenSimple name='胜哥哥' age={29} />
         <img src={logo} className="App-logo" alt="logo" />
 
