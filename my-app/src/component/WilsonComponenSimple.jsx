@@ -4,15 +4,16 @@ import PropTypes from "prop-types";
 // 类组件-精简模型下，实际开发项目中常用的方式
 class WilsonComponenSimple extends React.Component{
 
+    // 使用 propTypes 来对入参类型做限定
     static propTypes = {
         name: PropTypes.string.isRequired,
-        age: PropTypes.number,
+         age: PropTypes.number,
         test: PropTypes.func,
     }
 
     state = {isSelect: false, 
-            userName: '', 
-            password: '',
+             userName: '', 
+             password: '',
             otherUserName: '', 
             otherPassword: '',
         }
@@ -80,6 +81,22 @@ class WilsonComponenSimple extends React.Component{
         console.log('传过来的值：',event.target.value);
         console.log('通过state赋值后取出的值：', this.state.otherPassword);
     }
+
+        /**
+         * 组件更新流程之调用 setState
+         * (根据是否有参数，若有参数，则执行：componentWillReceiveProps，执行顺序排在下面步骤之前，但首次展示不会调用)
+         * 1.首先询问是否允许更新，调用方法：shouldComponentUpdate，我们可以充写改方法决定是否允许更新
+         * 2.第一步返回true，执行将要更新，调用方法：componentWillUpdate
+         * 3.调用render函数，更新各个节点
+         * 4.渲染完成，则调用方法：componentDidUpdate
+         */
+
+        /**
+         * 组件更新流程之调用 forceUpdate
+         * 1.执行将要更新，调用方法：componentWillUpdate
+         * 2.调用render函数，更新各个节点
+         * 3.渲染完成，则调用方法：componentDidUpdate
+         */
 
     render() {
         const {isSelect} = this.state

@@ -4,8 +4,11 @@ import Simple from './component/Simple'
 import WilsonComponent from './component/WilsonComponent'
 import WilsonComponenSimple from "./component/WilsonComponenSimple";
 import { Link } from 'react-router-dom';
+import { ReactDOM } from "react-dom";
+import { useState } from "react";
 
 function App(props) {
+  const [state, setstate] = useState(true)
 
   const fetchContent = (content) => {
     console.log(content);
@@ -14,7 +17,13 @@ function App(props) {
   const handlerClick = (v)=>{
     console.log(v);
   }
+
   const dataSource = ["React", "Angular", "Vue"]
+
+  const releaseComponent = () => {
+    console.log('releaseComponent');
+    setstate(false);
+  }
 
   return (
     <div className="App">
@@ -27,8 +36,11 @@ function App(props) {
 
         {/* 标准类组件 */}
         <div style={{ backgroundColor: 'red', color: 'green' }}>
-          <Simple name={'ddddd'} onClick={handlerClick} age={18}/>
+          <Simple name={'标准类组件-且传递了点击函数'} onClick={handlerClick} age={18}/>
+         
         </div>
+
+        {state ? <div onClick={releaseComponent} >卸载组件</div> : <div onClick={()=>setstate(true)}>显示</div>}
 
         <input
           placeholder="请输入内容"
@@ -66,8 +78,8 @@ function App(props) {
         }}>跳转到Simple</div>
 
         <div onClick={() => {
-          props.history.push('/simple');
-        }}>跳转到Simple</div>
+          props.history.push('/WilsonCount');
+        }}>跳转到WilsonCount</div>
       
       </header>
 
